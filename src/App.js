@@ -1,17 +1,26 @@
 /** @format */
 
-import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
+  const register = (e) => {
+    e.preventDefault();
+
+    console.log("Button clicked", e.target);
+  };
+
   return (
     <div className="App">
       <div className="u-full-width">
         <div className="row">
           <div className="three columns">
             <div className="authentication">
-              <button class="button-primary">Login</button>
-              <button class="button-primary">Register</button>
+              <form onSubmit>
+                <input></input>
+                <button class="button-primary">Login</button>
+                <input></input>
+                <button class="button-primary">Register</button>
+              </form>
             </div>
             <div className="conversation">
               {/* <input className="u-full-width" placeholder="Search..."></input> */}
@@ -29,7 +38,6 @@ function App() {
                 ))}
               </div> */}
             </div>
-            <button class="button-primary">Sign Out</button>
           </div>
           <div className="nine columns">
             <h1>Hello nine column</h1>
