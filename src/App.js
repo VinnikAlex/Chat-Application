@@ -1,10 +1,14 @@
 /** @format */
 
+import app from "../server/src/app";
+import { createSession } from "../server/src/controllers/auth";
 import "./App.css";
 
 function App() {
   const register = (e) => {
     e.preventDefault();
+
+    app.post("http://localhost:8102/auth/register", createSession);
 
     console.log("Button clicked", e.target);
   };
@@ -15,11 +19,11 @@ function App() {
         <div className="row">
           <div className="three columns">
             <div className="authentication">
-              <form onSubmit>
-                <input></input>
-                <button class="button-primary">Login</button>
-                <input></input>
-                <button class="button-primary">Register</button>
+              <form>
+                <input placeholder="username"></input>
+                <button className="button-primary" onClick={register}>
+                  Register
+                </button>
               </form>
             </div>
             <div className="conversation">
