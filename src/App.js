@@ -15,9 +15,6 @@ function App() {
               <Register user={user} setUser={setUser} />
               {/* <Conversations userToken={newUserToken} /> */}
             </div>
-            <div className="conversations">
-              <div>Conversations:</div>
-            </div>
           </div>
           <div className="eight columns">
             <div className="messages">

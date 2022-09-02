@@ -18,12 +18,12 @@ code {
   height: 100vh;
 }
 
-.three {
+.four {
   height: 100%;
   border: 1px solid black;
 }
 
-.nine {
+.eight {
   margin: 1px;
 }
 
@@ -38,4 +38,21 @@ code {
   background-color: aqua;
   position: fixed;
   bottom: 0;
+}
+
+.conversations {
+  list-style-type: none;
+  background-color: aqua;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.conversations:hover {
+  cursor: pointer;
+  color: rgb(83, 83, 83);
+}
+
+.postSubmit {
+  bottom: 0;
+  position: fixed;
 }

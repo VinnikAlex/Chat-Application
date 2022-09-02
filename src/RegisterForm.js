@@ -32,12 +32,14 @@ const Register = ({ user, setUser }) => {
   if (user) {
     return (
       <div className="row">
-        <p>Logged in as: {newUser}</p>
-        <form onSubmit={signOut}>
-          <button className="button-primary">Sign Out</button>
-        </form>
         <div>
-          <Conversations newUserToken={localStorage.getItem("token")} />
+          <h5>Logged in as: {newUser}</h5>
+          <form onSubmit={signOut}>
+            <button className="button-primary">Sign Out</button>
+          </form>
+          <div>
+            <Conversations newUserToken={localStorage.getItem("token")} />
+          </div>
         </div>
       </div>
     );
