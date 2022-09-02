@@ -14,18 +14,28 @@ code {
     monospace;
 }
 
-.authentication button {
-  margin: 10px;
-  margin-bottom: 3rem;
+.row {
+  height: 100vh;
 }
 
-.conversation input {
-  padding: 10px;
-  border-radius: 20px;
+.three {
+  height: 100%;
+  border: 1px solid black;
 }
 
-.tempdiv {
-  background-color: beige;
-  height: 800px;
-  margin: 10px;
+.nine {
+  margin: 1px;
+}
+
+.authentication {
+  margin: auto;
+  width: 50%;
+}
+
+.textbox {
+  height: 20%;
+  width: 100%;
+  background-color: aqua;
+  position: fixed;
+  bottom: 0;
 }
