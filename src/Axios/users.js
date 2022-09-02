@@ -27,19 +27,11 @@ const createUser = (newUser) => {
 };
 
 const getConversations = (token) => {
-  console.log("TOKEN:", token);
-
   return axios.get("http://localhost:8102/api/conversations/", {
     headers: {
       authorization: "Basic " + token,
     },
   });
-  // .then((response) =>
-  //   console.log("Convossss: ", response.data.conversations)
-  // );
-  // .catch((error) => {
-  //   console.log(error.response.data.message);
-  // });
 };
 
 // const createConversation = (token) => {};

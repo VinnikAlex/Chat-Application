@@ -19,12 +19,7 @@ const Register = ({ user, setUser }) => {
         console.log("Success: ", data);
         setUser(data);
         localStorage.setItem("token", data.data.token);
-        console.log("Token:", localStorage.getItem("token"));
-
-        // setToken(data.data.token);
-        // console.log(newToken);
-
-        // Conversations(data.data.token);
+        console.log("Token localStorage:", localStorage.getItem("token"));
       }
     });
   };
@@ -41,7 +36,9 @@ const Register = ({ user, setUser }) => {
         <form onSubmit={signOut}>
           <button className="button-primary">Sign Out</button>
         </form>
-        <Conversations newUserToken={localStorage.getItem("token")} />
+        <div>
+          <Conversations newUserToken={localStorage.getItem("token")} />
+        </div>
       </div>
     );
   } else {
