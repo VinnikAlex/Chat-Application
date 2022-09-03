@@ -1,34 +1,18 @@
 /** @format */
 
 import axios from "axios";
-// import { response } from "express";
-// require("dotenv").config();
 
-// const jwt = require("jsonwebtoken");
+import { io } from "socket.io-client";
 
-// const getUser = (user) => {
-//   //   console.log(process.env.SESSION_DB_SECRET);
-
-//   const config = {
-//     headers: {
-//       authorization: "Basic " + { token },
-//     },
-//   };
-
-//   return axios
-//     .get("http://localhost:8102/auth/", config)
-//     .then((response) => console.log(response.data));
-// };
-
-// let conversationsStore = [];
-
-const createUser = (newUser) => {
+const createUser = async (newUser) => {
   return axios
     .post("http://localhost:8102/auth/register", newUser)
     .catch((err) => console.log(err));
 };
 
-const getConversations = (token) => {
+const getConversations = async (token) => {
+  console.log("socket loading");
+
   return axios
     .get("http://localhost:8102/api/conversations/", {
       headers: {
@@ -38,14 +22,21 @@ const getConversations = (token) => {
     .catch((err) => console.log(err));
 };
 
-const createConversation = () => {
+const createConversation = async (token, conversationTitle) => {
+  console.log("got here");
   return axios
-    .post("http://localhost:8102/api/conversations/", {
-      headers: {
-        authorization: "Basic 63119bcffe2d44a1604577b2",
+    .post(
+      "http://localhost:8102/api/conversations/",
+      {
+        title: conversationTitle,
       },
-      title: "newTitle",
-    })
+      {
+        headers: {
+          ContentType: "application/json",
+          authorization: "Basic " + token,
+        },
+      }
+    )
     .catch((err) => console.log(err));
 };
 
