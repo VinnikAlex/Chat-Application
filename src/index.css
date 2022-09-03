@@ -42,18 +42,20 @@ code {
 }
 .conversation-div {
   word-wrap: break-word;
-  background-color: antiquewhite;
 }
 
 .conversations {
   list-style-type: none;
-  background-color: aqua;
+  box-shadow: 0px 0px 10px 1px rgba(50, 50, 50, 0.5);
   padding: 10px;
   border-radius: 5px;
+  transition: ease-in-out 0.2s;
 }
 
 .conversations:hover {
   cursor: pointer;
+  transform: scale(1.03);
+  transition: ease-in-out 0.2s;
   color: rgb(83, 83, 83);
 }
 
