@@ -3,9 +3,7 @@
 /** @format */
 
 import { useEffect, useState } from "react";
-// import { Message } from "../server/src/models";
 import users from "./Axios/users";
-import Messages from "./Messages";
 
 const Conversations = ({ newUserToken }) => {
   const [convo, setconversation] = useState([]);
@@ -60,6 +58,7 @@ const Conversations = ({ newUserToken }) => {
         <form onSubmit={createConversation}>
           <label htmlFor="newUser">Conversation Title</label>
           <input
+            className="conversationInput"
             type="text"
             name="newUser"
             onChange={(e) => setConversationTitle(e.target.value)}

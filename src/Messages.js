@@ -7,10 +7,7 @@ const Messages = ({ newUserToken }) => {
   const [message, createMessage] = useState("");
   const [recentMessages, getRecentMessages] = useState([""]);
 
-  console.log("STATE", recentMessages);
-
-  //   //get recent messages
-
+  //get recent messages every 1.5s
   useEffect(() => {
     users
       .getMessages(newUserToken, localStorage.getItem("conversation"))
@@ -30,6 +27,7 @@ const Messages = ({ newUserToken }) => {
     return () => clearInterval(interval);
   }, [null]);
 
+  // posts a message
   const sendMessage = (event) => {
     event.preventDefault();
     users
@@ -43,6 +41,7 @@ const Messages = ({ newUserToken }) => {
       });
   };
 
+  // deletes message once 'Delete' button is clicked (if user is the creator)
   const handleMessageDeletion = (e) => {
     console.log("CLICKED", e.target.value);
     users.deleteMessage(
@@ -51,18 +50,6 @@ const Messages = ({ newUserToken }) => {
       localStorage.getItem("conversation")
     );
   };
-
-  //   const deleteMessage = (messageID, conversationID) => {
-  //     console.log(
-  //       "MessageID",
-  //       messageID,
-  //       "ConversationID",
-  //       conversationID,
-  //       "UserToken",
-  //       localStorage.getItem("token")
-  //     );
-  //     users.deleteMessage(newUserToken, conversationID);
-  //   };
 
   if (recentMessages) {
     return (
@@ -87,6 +74,7 @@ const Messages = ({ newUserToken }) => {
             <form onSubmit={sendMessage}>
               <label htmlFor="newUser">Type Message:</label>
               <input
+                className="conversationInput"
                 type="text"
                 name="newUser"
                 onChange={(e) => createMessage(e.target.value)}
