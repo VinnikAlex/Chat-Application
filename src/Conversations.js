@@ -26,8 +26,10 @@ const Conversations = ({ newUserToken }) => {
     return () => clearInterval(interval);
   }, [null]);
 
+  // creates a new conversation once user submits a new "Conversation Title"
   const createConversation = (event) => {
     event.preventDefault();
+
     users.createConversation(newUserToken, conversationTitle).then((data) => {
       //storing conversation ID
       setnewConversation(data.data.id);
@@ -35,20 +37,18 @@ const Conversations = ({ newUserToken }) => {
     });
   };
 
+  // updates the localStorage('conversation')
   const setnewConversation = (conversationID) => {
+    console.log("CLICK");
     localStorage.setItem("conversation", conversationID);
   };
 
   return (
-    <div>
+    <div className="conversation-container">
       <div className="conversation-div">
         <h5>Conversations:</h5>
         {convo.map((conversation) => (
-          <li
-            key={conversation.id}
-            className="conversations"
-            onClick={setnewConversation(conversation.id)}
-          >
+          <li key={conversation.id} className="conversations">
             {" "}
             <b>{conversation.title}</b> <br></br> Messages:{" "}
             {conversation.messages}

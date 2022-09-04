@@ -20,28 +20,38 @@ code {
 
 .four {
   height: 100%;
-  border: 1px solid black;
-  overflow: auto;
+  border-right: 1px solid rgb(43, 43, 43);
+  background-color: rgb(239, 239, 239);
+  box-shadow: 0px 0px 10px 1px rgba(50, 50, 50, 0.5);
+  /* overflow: auto; */
 }
 
 .eight {
   margin: 1px;
+  width: 100vw;
+  height: 80vh;
 }
 
 .authentication {
   margin: auto;
-  width: 60%;
+  width: 90%;
+  height: 100vh;
 }
 
 .conversation-div {
   word-wrap: break-word;
-  margin-bottom: 3rem;
+  margin-bottom: 5rem;
+}
+
+.conversation-container {
+  height: 100vh;
 }
 
 .conversations {
   list-style-type: none;
+  background-color: white;
   box-shadow: 0px 0px 10px 1px rgba(50, 50, 50, 0.5);
-  padding: 10px;
+  padding: 15px;
   border-radius: 5px;
   transition: ease-in-out 0.2s;
 }
@@ -61,16 +71,36 @@ code {
   bottom: 0;
 }
 
+.messages {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .messageSend {
   position: fixed;
   bottom: 0;
   padding: 20px;
+  width: 100vw;
 }
 
 .message-list {
   list-style-type: none;
   font-size: 2rem;
-  margin-left: 10rem;
+  margin: 1rem;
+  margin-left: 9rem;
+}
+
+.delete {
+  float: right;
+  margin-left: 5rem;
+}
+
+.postSubmit {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  bottom: 0;
 }
 
 /* .delete {

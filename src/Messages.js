@@ -43,8 +43,26 @@ const Messages = ({ newUserToken }) => {
       });
   };
 
-  if (localStorage.getItem("conversation")) {
-  }
+  const handleMessageDeletion = (e) => {
+    console.log("CLICKED", e.target.value);
+    users.deleteMessage(
+      newUserToken,
+      e.target.value,
+      localStorage.getItem("conversation")
+    );
+  };
+
+  //   const deleteMessage = (messageID, conversationID) => {
+  //     console.log(
+  //       "MessageID",
+  //       messageID,
+  //       "ConversationID",
+  //       conversationID,
+  //       "UserToken",
+  //       localStorage.getItem("token")
+  //     );
+  //     users.deleteMessage(newUserToken, conversationID);
+  //   };
 
   if (recentMessages) {
     return (
@@ -54,6 +72,13 @@ const Messages = ({ newUserToken }) => {
             {" "}
             <b>{message.creator}:</b> <br></br>
             {message.text}
+            <button
+              value={message.id}
+              className="delete"
+              onClick={handleMessageDeletion}
+            >
+              Delete
+            </button>
           </li>
         ))}
 

@@ -69,10 +69,25 @@ const createMessage = async (token, conversationID, message) => {
     .catch((err) => console.log(err));
 };
 
+const deleteMessage = async (token, message, conversation) => {
+  return axios
+    .delete(
+      "http://localhost:8102/api/conversations/" + conversation + "/" + message,
+      {
+        headers: {
+          ContentType: "application/json",
+          authorization: "Basic " + token,
+        },
+      }
+    )
+    .catch((err) => console.log(err));
+};
+
 export default {
   createUser: createUser,
   getConversations: getConversations,
   createConversation: createConversation,
   createMessage: createMessage,
   getMessages: getMessages,
+  deleteMessage: deleteMessage,
 };
