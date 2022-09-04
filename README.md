@@ -8,8 +8,9 @@ This project is an implementation of a real time chat service. The features impl
 - Upon registration the user will be shown a list of conversations
 - The user is able to create new conversations
 - The user is able to post messages within the new conversations they create
+- The user is able to delete messages as long as they are the creator of those messages
 - Users are able to navigate back to the conversations view as is the nature of the 'split-screen' design
-- Conversation and Messages are updated at an interval of 1.5s so that new conversations and replies can be seen
+- Conversation and Messages are updated at an interval of 1.5s so that new conversations and replies are shown quickly
 
 Additional Features:
 

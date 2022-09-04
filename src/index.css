@@ -55,6 +55,7 @@ body {
 
 .conversationInput {
   margin-right: 5px;
+  width: 50%;
 }
 
 .conversations {
@@ -88,6 +89,17 @@ body {
   flex-direction: column;
   justify-content: space-between;
   margin: 0 auto;
+  margin-top: 3rem;
+}
+
+.messagesContainer {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.messageSendContainer {
+  width: 50%;
+  margin: 0 auto;
 }
 
 .messageSend {
@@ -100,13 +112,12 @@ body {
 .message-list {
   list-style-type: none;
   font-size: 2rem;
-
+  margin-bottom: 3rem;
   margin-left: 9rem;
 }
 
 .delete {
   float: right;
-  margin-left: 5rem;
 }
 
 .postSubmit {

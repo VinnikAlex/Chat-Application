@@ -54,34 +54,38 @@ const Messages = ({ newUserToken }) => {
   if (recentMessages) {
     return (
       <div className="messages">
-        {recentMessages.map((message) => (
-          <li key={message.id} className="message-list">
-            {" "}
-            <b>{message.creator}:</b> <br></br>
-            {message.text}
-            <button
-              value={message.id}
-              className="delete"
-              onClick={handleMessageDeletion}
-            >
-              Delete
-            </button>
-          </li>
-        ))}
+        <div className="messagesContainer">
+          {recentMessages.map((message) => (
+            <li key={message.id} className="message-list">
+              {" "}
+              <b>{message.creator}:</b> <br></br>
+              {message.text}
+              <button
+                value={message.id}
+                className="delete"
+                onClick={handleMessageDeletion}
+              >
+                Delete
+              </button>
+            </li>
+          ))}
+        </div>
 
         <div className="textbox">
           <div className="messageSend">
-            <form onSubmit={sendMessage}>
-              <label htmlFor="newUser">Type Message:</label>
-              <input
-                className="conversationInput"
-                type="text"
-                name="newUser"
-                onChange={(e) => createMessage(e.target.value)}
-              ></input>
+            <div className="messageSendContainer">
+              <form onSubmit={sendMessage}>
+                <label htmlFor="newUser">Type Message:</label>
+                <input
+                  className="conversationInput"
+                  type="text"
+                  name="newUser"
+                  onChange={(e) => createMessage(e.target.value)}
+                ></input>
 
-              <button className="button-primary">Send</button>
-            </form>
+                <button className="button-primary">Send</button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
