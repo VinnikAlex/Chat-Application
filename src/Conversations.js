@@ -30,9 +30,13 @@ const Conversations = ({ newUserToken }) => {
     event.preventDefault();
     users.createConversation(newUserToken, conversationTitle).then((data) => {
       //storing conversation ID
-      localStorage.setItem("conversation", data.data.id);
+      setnewConversation(data.data.id);
       console.log("Conversation ID:", localStorage.getItem("conversation"));
     });
+  };
+
+  const setnewConversation = (conversationID) => {
+    localStorage.setItem("conversation", conversationID);
   };
 
   return (
@@ -40,7 +44,11 @@ const Conversations = ({ newUserToken }) => {
       <div className="conversation-div">
         <h5>Conversations:</h5>
         {convo.map((conversation) => (
-          <li key={conversation.id} className="conversations">
+          <li
+            key={conversation.id}
+            className="conversations"
+            onClick={setnewConversation(conversation.id)}
+          >
             {" "}
             <b>{conversation.title}</b> <br></br> Messages:{" "}
             {conversation.messages}

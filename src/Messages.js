@@ -7,26 +7,28 @@ const Messages = ({ newUserToken }) => {
   const [message, createMessage] = useState("");
   const [recentMessages, getRecentMessages] = useState([""]);
 
-  console.log(message);
+  console.log("STATE", recentMessages);
 
   //   //get recent messages
 
-  //   useEffect(() => {
-  //     users
-  //       .getMessages(newUserToken, localStorage.getItem("conversation"))
-  //       .then((data) => {
-  //         console.log("Messages", data);
-  //         // getRecentMessages(data.data.text);
-  //       });
+  useEffect(() => {
+    users
+      .getMessages(newUserToken, localStorage.getItem("conversation"))
+      .then((data) => {
+        console.log("Messages", data.data.messages);
+        getRecentMessages(data.data.text);
+      });
 
-  //     const interval = setInterval(() => {
-  //       users.getMessages(newUserToken).then((data) => {
-  //         // getRecentMessages(data.data.text);
-  //       });
-  //     }, 15000);
+    const interval = setInterval(() => {
+      users
+        .getMessages(newUserToken, localStorage.getItem("conversation"))
+        .then((data) => {
+          getRecentMessages(data.data.messages);
+        });
+    }, 1500);
 
-  //     return () => clearInterval(interval);
-  //   }, [null]);
+    return () => clearInterval(interval);
+  }, [null]);
 
   const sendMessage = (event) => {
     event.preventDefault();
@@ -41,31 +43,56 @@ const Messages = ({ newUserToken }) => {
       });
   };
 
-  return (
-    <div className="messages">
-      {/* {recentMessages.map((message) => (
-        <li key={message.id} className="message-list">
-          {" "}
-          <b>{message.creator}</b> <br></br> Messages: {message.text}
-        </li>
-      ))} */}
+  if (localStorage.getItem("conversation")) {
+  }
 
-      <div className="textbox">
-        <div className="messageSend">
-          <form onSubmit={sendMessage}>
-            <label htmlFor="newUser">Type Message:</label>
-            <input
-              type="text"
-              name="newUser"
-              onChange={(e) => createMessage(e.target.value)}
-            ></input>
+  if (recentMessages) {
+    return (
+      <div className="messages">
+        {recentMessages.map((message) => (
+          <li key={message.id} className="message-list">
+            {" "}
+            <b>{message.creator}:</b> <br></br>
+            {message.text}
+          </li>
+        ))}
 
-            <button className="button-primary">Send</button>
-          </form>
+        <div className="textbox">
+          <div className="messageSend">
+            <form onSubmit={sendMessage}>
+              <label htmlFor="newUser">Type Message:</label>
+              <input
+                type="text"
+                name="newUser"
+                onChange={(e) => createMessage(e.target.value)}
+              ></input>
+
+              <button className="button-primary">Send</button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div className="messages">
+        <div className="textbox">
+          <div className="messageSend">
+            <form onSubmit={sendMessage}>
+              <label htmlFor="newUser">Type Message:</label>
+              <input
+                type="text"
+                name="newUser"
+                onChange={(e) => createMessage(e.target.value)}
+              ></input>
+
+              <button className="button-primary">Send</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    );
+  }
 };
 
 export default Messages;

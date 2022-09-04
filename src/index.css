@@ -67,6 +67,12 @@ code {
   padding: 20px;
 }
 
+.message-list {
+  list-style-type: none;
+  font-size: 2rem;
+  margin-left: 10rem;
+}
+
 /* .delete {
   margin-left: 2rem;
   transition: all ease-in-out 0.1s;

@@ -49,7 +49,7 @@ const getMessages = async (token, conversationID) => {
         },
       }
     )
-    .catch((err) => console.log(err));
+    .catch((err) => console.log(err.response.data));
 };
 
 const createMessage = async (token, conversationID, message) => {
