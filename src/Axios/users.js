@@ -2,8 +2,6 @@
 
 import axios from "axios";
 
-import { io } from "socket.io-client";
-
 const createUser = async (newUser) => {
   return axios
     .post("http://localhost:8102/auth/register", newUser)
@@ -23,7 +21,6 @@ const getConversations = async (token) => {
 };
 
 const createConversation = async (token, conversationTitle) => {
-  console.log("got here");
   return axios
     .post(
       "http://localhost:8102/api/conversations/",
@@ -40,10 +37,42 @@ const createConversation = async (token, conversationTitle) => {
     .catch((err) => console.log(err));
 };
 
-// const createConversation = (token) => {};
+const getMessages = async (token, conversationID) => {
+  return axios
+    .get(
+      "http://localhost:8102/api/conversations/" + conversationID,
+
+      {
+        headers: {
+          ContentType: "application/json",
+          authorization: "Basic " + token,
+        },
+      }
+    )
+    .catch((err) => console.log(err));
+};
+
+const createMessage = async (token, conversationID, message) => {
+  return axios
+    .post(
+      "http://localhost:8102/api/conversations/" + conversationID,
+      {
+        text: message,
+      },
+      {
+        headers: {
+          ContentType: "application/json",
+          authorization: "Basic " + token,
+        },
+      }
+    )
+    .catch((err) => console.log(err));
+};
 
 export default {
   createUser: createUser,
   getConversations: getConversations,
   createConversation: createConversation,
+  createMessage: createMessage,
+  getMessages: getMessages,
 };

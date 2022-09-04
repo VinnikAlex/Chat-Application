@@ -2,10 +2,10 @@
 
 /** @format */
 
-// import { useState } from "react";
 import { useEffect, useState } from "react";
+// import { Message } from "../server/src/models";
 import users from "./Axios/users";
-// import { WebSocketServer } from "ws";
+import Messages from "./Messages";
 
 const Conversations = ({ newUserToken }) => {
   const [convo, setconversation] = useState([]);
@@ -14,13 +14,11 @@ const Conversations = ({ newUserToken }) => {
   // fetches conversations every 1.5s
   useEffect(() => {
     users.getConversations(newUserToken).then((data) => {
-      console.log("hey", data);
       setconversation(data.data.conversations);
     });
 
     const interval = setInterval(() => {
       users.getConversations(newUserToken).then((data) => {
-        console.log("hey", data);
         setconversation(data.data.conversations);
       });
     }, 1500);
@@ -30,8 +28,11 @@ const Conversations = ({ newUserToken }) => {
 
   const createConversation = (event) => {
     event.preventDefault();
-    users.createConversation(newUserToken, conversationTitle);
-    console.log("Token works:", newUserToken);
+    users.createConversation(newUserToken, conversationTitle).then((data) => {
+      //storing conversation ID
+      localStorage.setItem("conversation", data.data.id);
+      console.log("Conversation ID:", localStorage.getItem("conversation"));
+    });
   };
 
   return (

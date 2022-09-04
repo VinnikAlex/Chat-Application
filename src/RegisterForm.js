@@ -3,6 +3,7 @@
 import { useState } from "react";
 import users from "./Axios/users";
 import Conversations from "./Conversations";
+import Messages from "./Messages";
 
 const Register = ({ user, setUser }) => {
   const [newUser, setUsername] = useState("");
@@ -18,6 +19,7 @@ const Register = ({ user, setUser }) => {
       } else {
         console.log("Success: ", data);
         setUser(data);
+        //storing token
         localStorage.setItem("token", data.data.token);
         console.log("Token localStorage:", localStorage.getItem("token"));
       }
@@ -31,16 +33,12 @@ const Register = ({ user, setUser }) => {
 
   if (user) {
     return (
-      <div className="row">
-        <div>
-          <h5>Logged in as: {newUser}</h5>
-          <form onSubmit={signOut}>
-            <button className="button-primary">Sign Out</button>
-          </form>
-          <div>
-            <Conversations newUserToken={localStorage.getItem("token")} />
-          </div>
-        </div>
+      <div>
+        <h5>Logged in as: {newUser}</h5>
+        <form onSubmit={signOut}>
+          <button className="button-primary">Sign Out</button>
+        </form>
+        <Conversations newUserToken={localStorage.getItem("token")} />
       </div>
     );
   } else {
