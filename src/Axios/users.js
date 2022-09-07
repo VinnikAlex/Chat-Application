@@ -6,13 +6,13 @@ const baseURL = "https://secret-gorge-72509.herokuapp.com";
 
 const createUser = async (newUser) => {
   return axios
-    .post(baseURL + "/auth/register", newUser)
+    .post("https://secret-gorge-72509.herokuapp.com/auth/register", newUser)
     .catch((err) => console.log(err));
 };
 
 const getConversations = async (token) => {
   return axios
-    .get(baseURL + "/api/conversations/", {
+    .get("https://secret-gorge-72509.herokuapp.com/api/conversations/", {
       headers: {
         authorization: "Basic " + token,
       },
