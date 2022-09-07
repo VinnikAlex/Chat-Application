@@ -2,17 +2,17 @@
 
 import axios from "axios";
 
-const baseURL = "https://secret-gorge-72509.herokuapp.com";
+const baseURL = "https://secret-gorge-72509.herokuapp.com/";
 
 const createUser = async (newUser) => {
   return axios
-    .post("https://secret-gorge-72509.herokuapp.com/auth/register", newUser)
+    .post(baseURL + "auth/register", newUser)
     .catch((err) => console.log(err));
 };
 
 const getConversations = async (token) => {
   return axios
-    .get("https://secret-gorge-72509.herokuapp.com/api/conversations/", {
+    .get(baseURL + "api/conversations/", {
       headers: {
         authorization: "Basic " + token,
       },
@@ -23,7 +23,7 @@ const getConversations = async (token) => {
 const createConversation = async (token, conversationTitle) => {
   return axios
     .post(
-      baseURL + "/api/conversations/",
+      baseURL + "api/conversations/",
       {
         title: conversationTitle,
       },
@@ -40,7 +40,7 @@ const createConversation = async (token, conversationTitle) => {
 const getMessages = async (token, conversationID) => {
   return axios
     .get(
-      baseURL + "/api/conversations/" + conversationID,
+      baseURL + "api/conversations/" + conversationID,
 
       {
         headers: {
@@ -55,7 +55,7 @@ const getMessages = async (token, conversationID) => {
 const createMessage = async (token, conversationID, message) => {
   return axios
     .post(
-      baseURL + "/api/conversations" + conversationID,
+      baseURL + "api/conversations" + conversationID,
       {
         text: message,
       },
@@ -71,7 +71,7 @@ const createMessage = async (token, conversationID, message) => {
 
 const deleteMessage = async (token, message, conversation) => {
   return axios
-    .delete(baseURL + "/api/conversations/" + conversation + "/" + message, {
+    .delete(baseURL + "api/conversations/" + conversation + "/" + message, {
       headers: {
         ContentType: "application/json",
         authorization: "Basic " + token,

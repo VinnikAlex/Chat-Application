@@ -10,6 +10,6 @@ const corsClientDomain = process.env.CORS_CLIENT_DOMAIN;
 const mongoDBUrl = process.env.MONGODB_URL;
 const sessionSecret = process.env.SESSION_DB_SECRET || "notVerySecretSecret";
 
-const port = process.env.PORT || "8002";
+const port = process.env.PORT || "8000";
 
 module.exports = { corsClientDomain, sessionSecret, port, mongoDBUrl };
