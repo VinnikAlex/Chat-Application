@@ -32,12 +32,12 @@ app.use(
     origin: config.corsClientDomain,
   })
 );
-// if (process.env.NODE_ENV === "development") {
-//   // only use in development
-//   app.use(errorhandler({ log: errorNotification }));
-// }
+if (process.env.NODE_ENV === "development") {
+  // only use in development
+  app.use(errorhandler({ log: errorNotification }));
+}
 app.use(cookieParser(config.sessionSecret));
 
-// app.use("/", router);
+app.use("/", router);
 
 module.exports = app;
