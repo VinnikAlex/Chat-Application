@@ -5,14 +5,14 @@ import axios from "axios";
 // const baseURL = "http://localhost:3000/api";
 
 const createUser = async (newUser) => {
-  return axios.post("/auth/register", newUser).catch((err) => console.log(err));
+  return axios
+    .post("https://secret-gorge-72509.herokuapp.com//auth/register", newUser)
+    .catch((err) => console.log(err));
 };
 
 const getConversations = async (token) => {
-  console.log("socket loading");
-
   return axios
-    .get("http://localhost:8102/api/conversations/", {
+    .get("https://secret-gorge-72509.herokuapp.com//api/conversations/", {
       headers: {
         authorization: "Basic " + token,
       },
@@ -23,7 +23,7 @@ const getConversations = async (token) => {
 const createConversation = async (token, conversationTitle) => {
   return axios
     .post(
-      "http://localhost:8102/api/conversations/",
+      "https://secret-gorge-72509.herokuapp.com//api/conversations/",
       {
         title: conversationTitle,
       },
@@ -40,7 +40,8 @@ const createConversation = async (token, conversationTitle) => {
 const getMessages = async (token, conversationID) => {
   return axios
     .get(
-      "http://localhost:8102/api/conversations/" + conversationID,
+      "https://secret-gorge-72509.herokuapp.com//api/conversations/" +
+        conversationID,
 
       {
         headers: {
@@ -55,7 +56,8 @@ const getMessages = async (token, conversationID) => {
 const createMessage = async (token, conversationID, message) => {
   return axios
     .post(
-      "http://localhost:8102/api/conversations/" + conversationID,
+      "https://secret-gorge-72509.herokuapp.com//api/conversations/" +
+        conversationID,
       {
         text: message,
       },
@@ -72,7 +74,10 @@ const createMessage = async (token, conversationID, message) => {
 const deleteMessage = async (token, message, conversation) => {
   return axios
     .delete(
-      "http://localhost:8102/api/conversations/" + conversation + "/" + message,
+      "https://secret-gorge-72509.herokuapp.com//api/conversations/" +
+        conversation +
+        "/" +
+        message,
       {
         headers: {
           ContentType: "application/json",
