@@ -6,13 +6,13 @@ import axios from "axios";
 
 const createUser = async (newUser) => {
   return axios
-    .post("https://secret-gorge-72509.herokuapp.com//auth/register", newUser)
+    .post("https://secret-gorge-72509.herokuapp.com/auth/register", newUser)
     .catch((err) => console.log(err));
 };
 
 const getConversations = async (token) => {
   return axios
-    .get("https://secret-gorge-72509.herokuapp.com//api/conversations/", {
+    .get("https://secret-gorge-72509.herokuapp.com/api/conversations/", {
       headers: {
         authorization: "Basic " + token,
       },
@@ -23,7 +23,7 @@ const getConversations = async (token) => {
 const createConversation = async (token, conversationTitle) => {
   return axios
     .post(
-      "https://secret-gorge-72509.herokuapp.com//api/conversations/",
+      "https://secret-gorge-72509.herokuapp.com/api/conversations/",
       {
         title: conversationTitle,
       },
@@ -40,7 +40,7 @@ const createConversation = async (token, conversationTitle) => {
 const getMessages = async (token, conversationID) => {
   return axios
     .get(
-      "https://secret-gorge-72509.herokuapp.com//api/conversations/" +
+      "https://secret-gorge-72509.herokuapp.com/api/conversations/" +
         conversationID,
 
       {
@@ -56,7 +56,7 @@ const getMessages = async (token, conversationID) => {
 const createMessage = async (token, conversationID, message) => {
   return axios
     .post(
-      "https://secret-gorge-72509.herokuapp.com//api/conversations/" +
+      "https://secret-gorge-72509.herokuapp.com/api/conversations/" +
         conversationID,
       {
         text: message,
@@ -74,7 +74,7 @@ const createMessage = async (token, conversationID, message) => {
 const deleteMessage = async (token, message, conversation) => {
   return axios
     .delete(
-      "https://secret-gorge-72509.herokuapp.com//api/conversations/" +
+      "https://secret-gorge-72509.herokuapp.com/api/conversations/" +
         conversation +
         "/" +
         message,
