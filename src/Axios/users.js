@@ -5,9 +5,7 @@ import axios from "axios";
 // const baseURL = "http://localhost:3000/api";
 
 const createUser = async (newUser) => {
-  return axios
-    .post("http://localhost:3000/api/auth/register", newUser)
-    .catch((err) => console.log(err));
+  return axios.post("/auth/register", newUser).catch((err) => console.log(err));
 };
 
 const getConversations = async (token) => {
