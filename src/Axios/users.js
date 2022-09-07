@@ -2,11 +2,11 @@
 
 import axios from "axios";
 
-// const baseURL = "http://localhost:3000/api";
+const baseURL = "https://secret-gorge-72509.herokuapp.com/api";
 
 const createUser = async (newUser) => {
   return axios
-    .post("https://secret-gorge-72509.herokuapp.com/auth/register", newUser)
+    .post(baseURL + "/auth/register", newUser)
     .catch((err) => console.log(err));
 };
 
@@ -56,7 +56,7 @@ const getMessages = async (token, conversationID) => {
 const createMessage = async (token, conversationID, message) => {
   return axios
     .post(
-      "https://secret-gorge-72509.herokuapp.com/api/conversations/" +
+      "https://secret-gorge-72509.herokuapp.com/api/conversations" +
         conversationID,
       {
         text: message,
