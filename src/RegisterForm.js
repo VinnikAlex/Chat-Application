@@ -3,7 +3,7 @@
 import { useState } from "react";
 import users from "./Axios/users";
 import Conversations from "./Conversations";
-import Messages from "./Messages";
+// import Messages from "./Messages";
 
 const Register = ({ user, setUser }) => {
   const [newUser, setUsername] = useState("");

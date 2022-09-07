@@ -2,6 +2,8 @@
 
 import axios from "axios";
 
+// const baseURL = "http://localhost:3000/api";
+
 const createUser = async (newUser) => {
   return axios
     .post("http://localhost:8102/auth/register", newUser)
