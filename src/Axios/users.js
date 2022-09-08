@@ -7,7 +7,7 @@ const baseURL = "http://localhost:8102/";
 const createUser = async (newUser) => {
   return axios
     .post(baseURL + "auth/register", newUser)
-    .catch((err) => console.log(err));
+    .catch((err) => console.log("ERRRORR", err));
 };
 
 const getConversations = async (token) => {

@@ -7,9 +7,9 @@ const messages = require("./controllers/messages");
 
 const router = express.Router();
 
-router.get("/", (request, response) => {
-  response.send("<h1>Hello World!</h1>");
-});
+// router.get("/", (request, response) => {
+//   response.send("<h1>Hello World!</h1>");
+// });
 
 router.post("/auth/register", auth.createSession);
 
